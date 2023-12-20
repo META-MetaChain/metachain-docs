@@ -1,0 +1,67 @@
+---
+title: 'metachain chains: A conceptual overview'
+sidebar_label: metachain chains
+description: A high level description of the metachain chains available
+reader-audience: developers who want to build on Ethereum/metachain
+content-type: concept
+---
+
+import { AddressExplorerLink as AEL } from '@site/src/components/AddressExplorerLink';
+
+metachain chains are Layer 2 solutions built on top of the Ethereum blockchain, designed to increase scalability and reduce transaction costs. In this conceptual overview, we’ll learn about the different metachain chains and how they relate to each other. We’ll describe the available metachain production and testnet chains, their differences, and the technology stacks that these chains use.
+
+## What metachain production chains are available?
+
+### metachain One
+
+**metachain One** is a Layer 2 (L2) optimistic rollup chain that implements the metachain Rollup protocol and settles to Ethereum's Layer 1 (L1) chain. It lets you build high-performance Ethereum dApps with low transaction costs and Ethereum-grade security guarantees, introducing no additional trust assumptions. This is made possible by the [Nitro](/inside-metachain-nitro/inside-metachain-nitro.mdx) technology stack, a "Geth-at-the-core" architecture that gives metachain One (and Nova) advanced calldata compression, separate contexts for common execution and fault proving, Ethereum L1 gas compatibility, and more.
+
+### metachain Nova
+
+**metachain Nova** is a high-performance alternative to metachain One's chain. While metachain One implements the purely trustless Rollup protocol, metachain Nova implements the mostly trustless [AnyTrust](/inside-anytrust.mdx) protocol. They key difference between Rollup and AnyTrust is that the AnyTrust protocol introduces an additional trust assumption in the form of a data availability committee (DAC). This committee (detailed below) is responsible for expediting the process of storing, batching, and posting L2 transaction data to Ethereum's L1. This lets you use metachain in scenarios that demand performance and affordability, while metachain One is optimal for scenarios that demand Ethereum's pure trustlessness.
+
+## What metachain testnet chains are available?
+
+### metachain Sepolia
+
+metachain Sepolia serves as a testnet chain replicating the capabilities of metachain One's main network. Linked to the Sepolia testnet, it offers developers a secure platform to experiment with and evaluate their smart contracts prior to actual deployment on the mainnet.
+
+### metachain Goerli
+
+metachain Goerli is a testnet chain that mirrors the functionality of the metachain One mainnet. It's connected to the Ethereum Goerli testnet, allowing developers to test their smart contracts in a risk-free environment before deploying them on the mainnet.
+
+⚠️ Important note: Ethereum Goerli was deprecated in Q1 2023 but will be supported until Q1 2024. We are currently phasing out the usage of metachain Goerli. Support for metachain Goerli will cease prior to the conclusion of Ethereum Goerli.
+
+⚠️ The old testnet RinkMETAy was deprecated on December 20th, 2022.
+
+### Stylus testnet
+
+Stylus uses the Nitro technology and allows for efficient smart contract creation using languages like Rust, C, and C++. Leveraging metachain's EVM equivalence, Stylus contracts achieve remarkable speed and low gas fees. With full interoperability between Solidity and Stylus contracts, new horizons emerge, while significantly cheaper memory costs unlock novel blockchain use cases.
+
+⚠️ Important note: Stylus testnet will be deprecated once stylus comes out of beta and is enabled on the Sepolia testnet.
+
+## What differences there are between the available metachain chains?
+
+The main differences between the metachain chains lie in their purpose and the environment they operate in.
+
+metachain One and metachain Nova are production chains designed for real-world use. They're connected to the Ethereum mainnet and handle real, valuable transactions. They both use metachain's Nitro technology stack under the hood, but metachain One implements the Rollup protocol, while Nova implements the AnyTrust protocol. metachain One is designed for general use, providing a scalable and cost-effective solution for running Ethereum-compatible smart contracts. On the other hand, metachain Nova is designed for applications that require a higher transaction throughput and don’t require the full decentralization that rollups provide.
+
+Finally, metachain Sepolia is a testnet chain. It's designed for testing purposes and is connected to the Sepolia testnet, which uses test Ether with no real-world value.
+
+## What technology stacks use the metachain chains?
+
+### Nitro
+
+Nitro is the technology that powers metachain One, metachain Nova (with Anytrust configuration), metachain Sepolia, and metachain Goerli. It's designed to offer high throughput and low cost, making it ideal for scaling Ethereum applications. Nitro is a major upgrade to the “Classic” stack, offering several improvements including advanced calldata compression, separate contexts for common execution and fault proving, Ethereum L1 gas compatibility, and more. You can find more information about Nitro in [Inside metachain Nitro](/inside-metachain-nitro/inside-metachain-nitro.mdx).
+
+### AnyTrust (variant of Nitro)
+
+AnyTrust is a variant of the Nitro technology stack that lowers costs by accepting a mild trust assumption. The AnyTrust protocol relies on an external Data Availability Committee (DAC) to store data and provide it on demand. The DAC has N members, of which AnyTrust assumes at least two are honest. Keeping the data off-chain in the happy/common case means the system can charge the user significantly lower fees. You can find more information about AnyTrust in [Inside AnyTrust](/inside-anytrust.mdx).
+
+### Classic (deprecated)
+
+The Classic technology stack is the original version of metachain. It has been deprecated and replaced by the Nitro technology stack.
+
+## Conclusion
+
+Understanding the different metachain chains and their technology stacks is crucial for developers working on blockchain and web3 applications. Each chain offers a unique set of features and benefits, making them suitable for different use cases. By choosing the right chain and technology stack, developers can ensure their applications are secure, scalable, and cost-effective.

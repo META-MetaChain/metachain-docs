@@ -1,0 +1,5 @@
+[submodule "metachain-sdk"]
+	path = metachain-sdk
+	url = https://github.com/META-MetaChain/metachain-sdk
+	branch = main
+

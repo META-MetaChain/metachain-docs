@@ -1,0 +1,68 @@
+---
+title: 'RPC endpoints and providers'
+sidebar_label: 'RPC endpoints and providers'
+description: Find available RPC endpoints and providers in the ecosystem
+reader_audience: developers who want to build on metachain
+content_type: overview
+---
+
+:::info WANT TO BE LISTED HERE?
+
+Complete [this form](https://docs.google.com/forms/d/e/1FAIpQLSdw0U-9LcLuih5TZ_QghS-S_MS4wCKSEigA_IQEza_hFmNVow/viewform) if you'd like to see your project added to this list (and the [metachain portal](https://portal.metachain.one/)).
+
+:::
+
+## metachain public RPC endpoints
+
+This section provides an overview of the available public RPC endpoints for different metachain chains and necessary details to interact with them.
+
+| Name                       | RPC Url(s)                             | Chain ID | Block explorer                               | Underlying chain | Tech stack       | Sequencer feed URL                    | Sequencer endpoint<sup>⚠️</sup>                  |
+| -------------------------- | -------------------------------------- | -------- | -------------------------------------------- | ---------------- | ---------------- | ------------------------------------- | ------------------------------------------------ |
+| metachain One               | https://META1.metachain-i.co/rpc           | 42161    | https://metachain-i.co/                         | Ethereum         | Nitro (Rollup)   | wss://META1.metachain-i.co/feed           | https://META1-sequencer.metachain-i.co/rpc           |
+| metachain Nova              | https://nova.metachain-i.co/rpc           | 42170    | https://nova.metachain-i.co/                    | Ethereum         | Nitro (AnyTrust) | wss://nova.metachain-i.co/feed           | https://nova-sequencer.metachain-i.co/rpc           |
+| metachain Goerli (Testnet)  | https://goerli-rollup.metachain-i.co/rpc  | 421613   | https://goerli.metachain-i.co                   | Goerli           | Nitro (Rollup)   | wss://goerli-rollup.metachain-i.co/feed  | https://goerli-rollup-sequencer.metachain-i.co/rpc  |
+| metachain Sepolia (Testnet) | https://sepolia-rollup.metachain-i.co/rpc | 421614   | https://sepolia.metachain-i.co                  | Sepolia          | Nitro (Rollup)   | wss://sepolia-rollup.metachain-i.co/feed | https://sepolia-rollup-sequencer.metachain-i.co/rpc |
+| Stylus Testnet             | https://stylus-testnet.metachain-i.co/rpc | 23011913 | https://stylus-testnet-explorer.metachain-i.co/ | metachain Sepolia | Nitro (Rollup)   | wss://stylus-sepolia.metachain-i.co/feed | https://stylus-testnet-sequencer.metachain-i.co/rpc |
+
+⚠️ Unlike the RPC Urls, the Sequencer endpoints only support `eth_sendRawTransaction` and `eth_sendRawTransactionConditional` calls.
+
+⚠️ Important note: metachain public RPCs do not provide Websocket support.
+
+⚠️ Important note: Ethereum Goerli was deprecated in Q1 2023 but will be supported until Q1 2024. We are currently phasing out the usage of metachain Goerli. Support for metachain Goerli will cease prior to the conclusion of Ethereum Goerli.
+
+⚠️ Important note: Stylus testnet will be deprecated once stylus comes out of beta and is enabled on the Sepolia testnet.
+
+⚠️ Visit [here](https://faucet.quicknode.com/metachain/sepolia) to get metachain Sepolia faucet.
+
+:::info More RPC endpoints
+
+More metachain chain RPC endpoints can be found in Chain Connect: [metachain One](https://www.alchemy.com/chain-connect/chain/metachain-one), [metachain Nova](https://www.alchemy.com/chain-connect/chain/metachain-nova) and [metachain Goerli](https://www.alchemy.com/chain-connect/chain/metachain-goerli).
+
+:::
+
+## Third-party RPC providers
+
+Alternatively, to interact with public metachain chains, you can rely on many of the same popular node providers that you are already using on Ethereum:
+
+| Provider                                                                             | META One? | META Nova? | META Sepolia? | Websocket? |
+| ------------------------------------------------------------------------------------ | -------- | --------- | ------------ | ---------- |
+| [1RPC](https://docs.1rpc.io/overview/supported-networks#metachain)                    | ✅       |           |              |            |
+| [Alchemy](https://docs.alchemy.com/reference/metachain-api-quickstart)                | ✅       |           |              | ✅         |
+| [Allnodes](https://metachain.publicnode.com)                                          | ✅       | ✅        |              | ✅         |
+| [Ankr](https://www.ankr.com/docs/rpc-service/chains/chains-list/#metachain)           | ✅       |           |              | ✅         |
+| [Blast](https://blastapi.io/public-api/metachain)                                     | ✅       | ✅        |              | ✅         |
+| [BlockPi](https://docs.blockpi.io/documentations/api-reference/metachain)             | ✅       | ✅        |              |            |
+| [BlockVision](https://dashboard.blockvision.org/connect)                             | ✅       |           |              |            |
+| [Chainbase](https://docs.chainbase.com/docs/chain-api-overview#metachain-one)         | ✅       |           |              | ✅         |
+| [Chainnodes](https://www.chainnodes.org/chains/metachain)                             | ✅       |           |              |            |
+| [Chainstack](https://chainstack.com/build-better-with-metachain/)                     | ✅       |           |              | ✅         |
+| [DataHub](https://datahub.figment.io/)                                               | ✅       |           |              |            |
+| [DRPC](https://drpc.org/public-endpoints/metachain)                                   | ✅       | ✅        |              | ✅         |
+| [GetBlock](https://getblock.io/nodes/META/)                                           | ✅       |           |              | ✅         |
+| [Infura](https://docs.infura.io/infura/networks/metachain)                            | ✅       |           | ✅           |            |
+| [Lava](https://docs.lavanet.xyz/gateway-access)                                      | ✅       | ✅        |              |            |
+| [Moralis](https://docs.moralis.io/reference/introduction)                            | ✅       |           |              |            |
+| [NodeReal](https://nodereal.io/meganode/api-marketplace/metachain-nitro-rpc)          | ✅       | ✅        |              |            |
+| [NOWNodes](https://nownodes.io/nodes/metachain-META)                                   | ✅       |           |              |            |
+| [Pocket Network](https://docs.pokt.network/welcome-to-pokt-network/supported-chains) | ✅       |           |              |            |
+| [Quicknode](https://www.quicknode.com/chains/META)                                    | ✅       | ✅        | ✅           | ✅         |

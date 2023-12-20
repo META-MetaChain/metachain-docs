@@ -1,0 +1,192 @@
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Solidity interface</th>
+      <th>Go implementation</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        ⚠️<code>getPreferredAggregator(address addr)</code>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro-contracts/blob/b16bf0b737468382854dac28346fec8b65b55989/src/precompiles/METAAggregator.sol#L14"
+          target="_blank"
+        >
+          Interface
+        </a>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro/blob/v2.1.3/precompiles/METAAggregator.go#L24"
+          target="_blank"
+        >
+          Implementation
+        </a>
+      </td>
+      <td>Deprecated: Do not use this method.</td>
+    </tr>
+    <tr>
+      <td>
+        ⚠️<code>getDefaultAggregator()</code>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro-contracts/blob/b16bf0b737468382854dac28346fec8b65b55989/src/precompiles/METAAggregator.sol#L18"
+          target="_blank"
+        >
+          Interface
+        </a>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro/blob/v2.1.3/precompiles/METAAggregator.go#L30"
+          target="_blank"
+        >
+          Implementation
+        </a>
+      </td>
+      <td>Deprecated: Do not use this method.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>getBatchPosters()</code>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro-contracts/blob/b16bf0b737468382854dac28346fec8b65b55989/src/precompiles/METAAggregator.sol#L22"
+          target="_blank"
+        >
+          Interface
+        </a>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro/blob/v2.1.3/precompiles/METAAggregator.go#L35"
+          target="_blank"
+        >
+          Implementation
+        </a>
+      </td>
+      <td>GetBatchPosters gets the addresses of all current batch posters</td>
+    </tr>
+    <tr>
+      <td>
+        <code>addBatchPoster(address newBatchPoster)</code>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro-contracts/blob/b16bf0b737468382854dac28346fec8b65b55989/src/precompiles/METAAggregator.sol#L27"
+          target="_blank"
+        >
+          Interface
+        </a>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro/blob/v2.1.3/precompiles/METAAggregator.go#L39"
+          target="_blank"
+        >
+          Implementation
+        </a>
+      </td>
+      <td>Adds newBatchPoster as a batch poster</td>
+    </tr>
+    <tr>
+      <td>
+        <code>getFeeCollector(address batchPoster)</code>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro-contracts/blob/b16bf0b737468382854dac28346fec8b65b55989/src/precompiles/METAAggregator.sol#L32"
+          target="_blank"
+        >
+          Interface
+        </a>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro/blob/v2.1.3/precompiles/METAAggregator.go#L62"
+          target="_blank"
+        >
+          Implementation
+        </a>
+      </td>
+      <td>GetFeeCollector gets a batch poster's fee collector</td>
+    </tr>
+    <tr>
+      <td>
+        <code>setFeeCollector(address batchPoster, address newFeeCollector)</code>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro-contracts/blob/b16bf0b737468382854dac28346fec8b65b55989/src/precompiles/METAAggregator.sol#L38"
+          target="_blank"
+        >
+          Interface
+        </a>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro/blob/v2.1.3/precompiles/METAAggregator.go#L71"
+          target="_blank"
+        >
+          Implementation
+        </a>
+      </td>
+      <td>
+        SetFeeCollector sets a batch poster's fee collector (caller must be the batch poster, its
+        fee collector, or an owner)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ⚠️<code>getTxBaseFee(address aggregator)</code>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro-contracts/blob/b16bf0b737468382854dac28346fec8b65b55989/src/precompiles/METAAggregator.sol#L43"
+          target="_blank"
+        >
+          Interface
+        </a>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro/blob/v2.1.3/precompiles/METAAggregator.go#L93"
+          target="_blank"
+        >
+          Implementation
+        </a>
+      </td>
+      <td>Deprecated: returns 0</td>
+    </tr>
+    <tr>
+      <td>
+        ⚠️<code>setTxBaseFee(address aggregator, uint256 feeInL1Gas)</code>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro-contracts/blob/b16bf0b737468382854dac28346fec8b65b55989/src/precompiles/METAAggregator.sol#L51"
+          target="_blank"
+        >
+          Interface
+        </a>
+      </td>
+      <td>
+        <a
+          href="https://github.com/META-MetaChain/nitro/blob/v2.1.3/precompiles/METAAggregator.go#L99"
+          target="_blank"
+        >
+          Implementation
+        </a>
+      </td>
+      <td>Deprecated: does nothing</td>
+    </tr>
+  </tbody>
+</table>
+<p>Note: methods marked with ⚠️ are deprecated and their use is not supported.</p>

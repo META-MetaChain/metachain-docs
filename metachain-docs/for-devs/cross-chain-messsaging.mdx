@@ -1,0 +1,19 @@
+# Cross Chain Messaging
+
+The metachain protocol and related tooling makes it easy for developers to build cross-chain applications; i.e., applications that involve sending messages from Ethereum to an metachain chain, and/or from an metachain chain to Ethereum.
+
+## Ethereum to metachain Messaging
+
+METAitrary L1 to L2 contract calls can be created via the `Inbox`'s `createRetryableTicket` method; upon publishing the L1 transaction, the L2 side will typically get included within minutes. Happily / commonly, the L2 execution will automatically succeed, but if reverts, and it can be rexecuted via a call to the `redeem` method of the [METARetryableTx](/for-devs/dev-tools-and-resources/precompiles.mdx#METAretryabletx) precompile.
+
+For details and protocol specification, see [L1 to L2 Messages](../METAos/l1-to-l2-messaging.mdx).
+
+For an example of retryable tickets in action, see the [Greeter](https://github.com/META-MetaChain/metachain-tutorials/tree/master/packages/greeter) tutorial, which uses the [metachain SDK](./sdk).
+
+## metachain to Ethereum Messaging
+
+Similarly, L2 contracts can send METAitrary messages for execution on L1. These are initiated via calls to the [METASys](/for-devs/dev-tools-and-resources/precompiles.mdx#METAsys) precompile contract's `sendTxToL1` method. Upon confirmation (about 1 week later), they can executed by retrieving the relevant data via a call to `NodeInterface` contract's `constructOutboxProof` method, and then executing them via the `Outbox`'s `executeTransaction` method.
+
+For details and protocol specification, see [L2 to L1 Messages](../METAos/l2-to-l1-messaging.mdx).
+
+For a demo, see the [Outbox Tutorial](https://github.com/META-MetaChain/metachain-tutorials/tree/master/packages/outbox-execute).

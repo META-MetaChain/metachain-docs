@@ -1,0 +1,179 @@
+---
+title: 'Precompiles reference'
+sidebar_label: Precompiles reference
+description: A reference page of all precompiles available on metachain chains
+reader-audience: developers who want to build on Ethereum/metachain
+content-type: reference
+---
+
+METAOS provides L2-specific precompiles with methods smart contracts can call the same way they can solidity functions. This reference page exhaustively documents the specific calls METAOS makes available through precompiles. For a more conceptual description of what precompiles are and how they work, please refer to the [precompiles conceptual page](/for-devs/concepts/precompiles.mdx).
+
+This reference page is divided into two sections. The first one lists all precompiles in a summary table with links to the reference of the specific precompile, along with the address where they live, their purpose and links to the go implementation and solidity interface. The second one details the methods available in each precompile with links to the specific implementation.
+
+## General information of precompiles
+
+This section is divided into two tables. We first list precompiles we expect users to most often use, and then the rest of precompiles. However, both tables display the same information: name and purpose of the precompile, address, and links to the solidity interface and the go implementation.
+
+### Common precompiles
+
+| Precompile                        | Address | Solidity interface                         | Go implementation                                    | Purpose                             |
+| --------------------------------- | ------- | ------------------------------------------ | ---------------------------------------------------- | ----------------------------------- |
+| [METAAggregator](#METAaggregator)   | `0x6d`  | [Interface][METAaggregator_link_interface]  | [Implementation][METAaggregator_link_implementation]  | Configuring transaction aggregation |
+| [METAGasInfo](#METAgasinfo)         | `0x6c`  | [Interface][METAgasinfo_link_interface]     | [Implementation][METAgasinfo_link_implementation]     | Info about gas pricing              |
+| [METARetryableTx](#METAretryabletx) | `0x6e`  | [Interface][METAretryabletx_link_interface] | [Implementation][METAretryabletx_link_implementation] | Managing retryables                 |
+| [METASys](#METAsys)                 | `0x64`  | [Interface][METAsys_link_interface]         | [Implementation][METAsys_link_implementation]         | System-level functionality          |
+
+### Other precompiles
+
+| Precompile                            | Address | Solidity interface                           | Go implementation                                      | Purpose                                            |
+| ------------------------------------- | ------- | -------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------- |
+| [METAAddressTable](#METAaddresstable)   | `0x66`  | [Interface][METAaddresstable_link_interface]  | [Implementation][METAaddresstable_link_implementation]  | Supporting compression of addresses                |
+| METABLS                                | `0x67`  | -                                            | -                                                      | **Disabled** (Former registry of BLS public keys)  |
+| [METADebug](#METAdebug)                 | `0xff`  | [Interface][METAdebug_link_interface]         | [Implementation][METAdebug_link_implementation]         | Testing tools                                      |
+| [METAFunctionTable](#METAfunctiontable) | `0x68`  | [Interface][METAfunctiontable_link_interface] | [Implementation][METAfunctiontable_link_implementation] | No longer used                                     |
+| [METAInfo](#METAinfo)                   | `0x65`  | [Interface][METAinfo_link_interface]          | [Implementation][METAinfo_link_implementation]          | Info about accounts                                |
+| [METAOwner](#METAowner)                 | `0x70`  | [Interface][METAowner_link_interface]         | [Implementation][METAowner_link_implementation]         | Chain administration, callable only by chain owner |
+| [METAOwnerPublic](#METAownerpublic)     | `0x6b`  | [Interface][METAownerpublic_link_interface]   | [Implementation][METAownerpublic_link_implementation]   | Info about chain owners                            |
+| [METAosTest](#METAostest)               | `0x69`  | [Interface][METAostest_link_interface]        | [Implementation][METAostest_link_implementation]        | No longer used                                     |
+| [METAStatistics](#METAstatistics)       | `0x6f`  | [Interface][METAstatistics_link_interface]    | [Implementation][METAstatistics_link_implementation]    | Info about the pre-Nitro state                     |
+
+<!-- For clarity in the code, we add here all links to github, using "link references" (First the interfaces, and below the implementations) -->
+
+[METAaddresstable_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAAddressTable.sol
+[METAaggregator_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAAggregator.sol
+[METAdebug_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METADebug.sol
+[METAfunctiontable_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAFunctionTable.sol
+[METAgasinfo_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAGasInfo.sol
+[METAinfo_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAInfo.sol
+[METAowner_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAOwner.sol
+[METAownerpublic_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAOwnerPublic.sol
+[METAostest_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAosTest.sol
+[METAretryabletx_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METARetryableTx.sol
+[METAstatistics_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METAStatistics.sol
+[METAsys_link_interface]: https://github.com/META-MetaChain/@nitroContractsRepositorySlug@/blob/@nitroContractsCommit@/@nitroContractsPathToPrecompilesInterface@/METASys.sol
+[METAaddresstable_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAAddressTable.go
+[METAaggregator_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAAggregator.go
+[METAdebug_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METADebug.go
+[METAfunctiontable_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAFunctionTable.go
+[METAgasinfo_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAGasInfo.go
+[METAinfo_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAInfo.go
+[METAowner_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAOwner.go
+[METAownerpublic_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAOwnerPublic.go
+[METAostest_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAosTest.go
+[METAretryabletx_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METARetryableTx.go
+[METAstatistics_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METAStatistics.go
+[METAsys_link_implementation]: https://github.com/META-MetaChain/@nitroRepositorySlug@/blob/@nitroVersionTag@/@nitroPathToPrecompiles@/METASys.go
+
+## Precompiles reference
+
+### METAAddressTable
+
+METAAddressTable ([Interface][METAaddresstable_link_interface] | [Implementation][METAaddresstable_link_implementation]) provides the ability to create short-hands for commonly used accounts.
+
+import METAAddressTableRef from './partials/precompile-tables/_METAAddressTable.md';
+
+<METAAddressTableRef />
+
+### METAAggregator
+
+METAAggregator ([Interface][METAaggregator_link_interface] | [Implementation][METAaggregator_link_implementation]) provides aggregators and their users methods for configuring how they participate in L1 aggregation. metachain One's default aggregator is the Sequencer, which a user will prefer unless `SetPreferredAggregator` is invoked to change it.
+
+Compression ratios are measured in basis points. Methods that are checkmarked are access-controlled and will revert if not called by the aggregator, its fee collector, or a chain owner.
+
+import METAAggregatorRef from './partials/precompile-tables/_METAAggregator.md';
+
+<METAAggregatorRef />
+
+### METABLS
+
+:::caution Disabled
+
+This precompile has been disabled. It previously provided a registry of BLS public keys for accounts.
+
+:::
+
+### METADebug
+
+METADebug ([Interface][METAdebug_link_interface] | [Implementation][METAdebug_link_implementation]) provides mechanisms useful for testing. The methods of `METADebug` are only available for chains with the `AllowDebugPrecompiles` chain parameter set. Otherwise, calls to this precompile will revert.
+
+import METADebugRef from './partials/precompile-tables/_METADebug.md';
+
+<METADebugRef />
+
+### METAFunctionTable
+
+METAFunctionTable ([Interface][METAfunctiontable_link_interface] | [Implementation][METAfunctiontable_link_implementation]) provides aggregators the ability to manage function tables, to enable one form of transaction compression. The Nitro aggregator implementation does not use these, so these methods have been stubbed and their effects disabled. They are kept for backwards compatibility.
+
+import METAFunctionTableRef from './partials/precompile-tables/_METAFunctionTable.md';
+
+<METAFunctionTableRef />
+
+### METAGasInfo
+
+METAGasInfo ([Interface][METAgasinfo_link_interface] | [Implementation][METAgasinfo_link_implementation]) provides insight into the cost of using the chain. These methods have been adjusted to account for Nitro's heavy use of calldata compression. Of note to end-users, we no longer make a distinction between non-zero and zero-valued calldata bytes.
+
+import METAGasInfoRef from './partials/precompile-tables/_METAGasInfo.md';
+
+<METAGasInfoRef />
+
+### METAInfo
+
+METAInfo ([Interface][METAinfo_link_interface] | [Implementation][METAinfo_link_implementation]) provides the ability to lookup basic info about accounts and contracts.
+
+import METAInfoRef from './partials/precompile-tables/_METAInfo.md';
+
+<METAInfoRef />
+
+### METAosTest
+
+METAosTest ([Interface][METAostest_link_interface] | [Implementation][METAostest_link_implementation]) provides a method of burning METAitrary amounts of gas, which exists for historical reasons. In Classic, `METAosTest` had additional methods only the zero address could call. These have been removed since users don't use them and calls to missing methods revert.
+
+import METAosTestRef from './partials/precompile-tables/_METAosTest.md';
+
+<METAosTestRef />
+
+### METAOwner
+
+METAOwner ([Interface][METAowner_link_interface] | [Implementation][METAowner_link_implementation]) provides owners with tools for managing the rollup. Calls by non-owners will always revert.
+
+Most of metachain Classic's owner methods have been removed since they no longer make sense in Nitro:
+
+- What were once chain parameters are now parts of METAOS's state, and those that remain are set at genesis.
+- METAOS upgrades happen with the rest of the system rather than being independent
+- Exemptions to address aliasing are no longer offered. Exemptions were intended to support backward compatibility for contracts deployed before aliasing was introduced, but no exemptions were ever requested.
+
+import METAOwnerRef from './partials/precompile-tables/_METAOwner.md';
+
+<METAOwnerRef />
+
+### METAOwnerPublic
+
+METAOwnerPublic ([Interface][METAownerpublic_link_interface] | [Implementation][METAownerpublic_link_implementation]) provides non-owners with info about the current chain owners.
+
+import METAOwnerPublicRef from './partials/precompile-tables/_METAOwnerPublic.md';
+
+<METAOwnerPublicRef />
+
+### METARetryableTx
+
+METARetryableTx ([Interface][METAretryabletx_link_interface] | [Implementation][METAretryabletx_link_implementation]) provides methods for managing retryables. The model has been adjusted for Nitro, most notably in terms of how retry transactions are scheduled. For more information on retryables, please see [the retryable documentation](METAos#Retryables).
+
+import METARetryableTxRef from './partials/precompile-tables/_METARetryableTx.md';
+
+<METARetryableTxRef />
+
+### METAStatistics
+
+METAStatistics ([Interface][METAstatistics_link_interface] | [Implementation][METAstatistics_link_implementation]) provides statistics about the chain as of just before the Nitro upgrade. In metachain Classic, this was how a user would get info such as the total number of accounts, but there are better ways to get that info in Nitro.
+
+import METAStatisticsRef from './partials/precompile-tables/_METAStatistics.md';
+
+<METAStatisticsRef />
+
+### METASys
+
+METASys ([Interface][METAsys_link_interface] | [Implementation][METAsys_link_implementation]) provides system-level functionality for interacting with L1 and understanding the call stack.
+
+import METASysRef from './partials/precompile-tables/_METASys.md';
+
+<METASysRef />
